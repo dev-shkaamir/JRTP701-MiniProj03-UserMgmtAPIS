@@ -51,7 +51,7 @@ public class UserMgmtServiceImpl implements IUserManagementService {
 		String subject = "User Registration Success";
 		String body =readEmailMessageBody(env.getProperty("mailbody.registeruser.location") ,user.getName(),tempPass);
 		emailUtils.sendMailMessage(user.getEmail(), subject, body);
-		return savedMaster != null ? "User is registered with Id values :"+savedMaster.getUserId() : "Problem in user registraction" ;
+		return savedMaster != null ? "User is registered with Id values :"+savedMaster.getUserId()+"check mail for temprory password ." : "Problem in user registraction" ;
 	}
 
 	/*
@@ -258,7 +258,7 @@ public class UserMgmtServiceImpl implements IUserManagementService {
 			String subject = "Mail for password recovery";
 			String mailBody = readEmailMessageBody(env.getProperty("mailbody.recoverpwd.location"),subject , pwd);
 			emailUtils.sendMailMessage(recover.getEmail(), subject, mailBody);
-			return pwd;
+			return pwd+" mail is send having the recoverd password";
 		}
 		return "User and Email not found";
 		
