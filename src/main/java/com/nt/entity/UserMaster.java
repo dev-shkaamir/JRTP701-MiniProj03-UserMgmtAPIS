@@ -33,9 +33,10 @@ public class UserMaster {
 	@Column(length=20)
 	private String password;
 	
-	@Column(length=20)
+	@Column(length=40 , unique=true , nullable=false)
 	private String email;
-	private String mobileNo;
+	
+	private Long mobileNo;
 	private String aadharNo;
 	
 	@Column(length=10)
@@ -46,11 +47,11 @@ public class UserMaster {
 	
 	//MetaData
 	@CreationTimestamp
-	@Column(updatable=false , insertable=true)
+	@Column(name = "created_on" ,updatable=false )
 	private LocalDateTime createdOn;
 	
 	@UpdateTimestamp
-	@Column(updatable=true , insertable=false)
+	@Column(name = "updated_on" ,updatable=true )
 	private LocalDateTime updatedOn;
 	
 	@Column(length=20)
@@ -83,10 +84,10 @@ public class UserMaster {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getMobileNo() {
+	public Long getMobileNo() {
 		return mobileNo;
 	}
-	public void setMobileNo(String mobileNo) {
+	public void setMobileNo(Long mobileNo) {
 		this.mobileNo = mobileNo;
 	}
 	public String getAadharNo() {
@@ -113,18 +114,8 @@ public class UserMaster {
 	public void setActive_sw(String active_sw) {
 		this.active_sw = active_sw;
 	}
-	public LocalDateTime getCreatedOn() {
-		return createdOn;
-	}
-	public void setCreatedOn(LocalDateTime createdOn) {
-		this.createdOn = createdOn;
-	}
-	public LocalDateTime getUpdatedOn() {
-		return updatedOn;
-	}
-	public void setUpdatedOn(LocalDateTime updatedOn) {
-		this.updatedOn = updatedOn;
-	}
+	
+	
 	public String getCreatedBy() {
 		return createdBy;
 	}
