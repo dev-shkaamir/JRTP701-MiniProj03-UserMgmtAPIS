@@ -152,7 +152,7 @@ public class UserMgmtOperationsController {
 	}
 	
 	
-	@PutMapping("/changeS tatus/{id}/{status}")
+	@PutMapping("/changeStatus/{id}/{status}")
 	public ResponseEntity<String> changeStatus(@PathVariable Integer id , @PathVariable String status)
 	{
 		try {

@@ -280,7 +280,7 @@ public class UserMgmtServiceImpl implements IUserManagementService {
 	private String readEmailMessageBody(String fileName,String fullName , String password ) throws Exception
 	{
 		String mailBody = null;
-		String url = "localhost:4041/user-api/activate";
+		String url = "http://localhost:4041/user-api/activate";
 		try(FileReader reader = new FileReader(fileName);
 			BufferedReader br = new BufferedReader(reader)) 
 		{
@@ -289,7 +289,10 @@ public class UserMgmtServiceImpl implements IUserManagementService {
 			String line = null;
 			do {
 				line = br.readLine();
-				buffer.append(line);
+				if(line != null)
+				{
+					buffer.append(line);
+				}
 			}while(line != null);
 			mailBody = buffer.toString();
 			mailBody = mailBody.replace("{FULL-NAME}", fullName);
